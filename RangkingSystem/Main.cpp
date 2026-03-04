@@ -174,6 +174,25 @@ int CountNodes(Node* node)
 	return 1 + CountNodes(node->left) + CountNodes(node->right);
 }
 
+void DestroyTree(Node* node)
+{
+	// 종료 조건
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	// 왼쪽 자식 삭제
+	DestroyTree(node->left);
+
+	// 오른쪽 자식 삭제
+	DestroyTree(node->right);
+
+	// 메모리 해제
+	delete[] node->playerName;
+	delete node;
+}
+
 int main()
 {
 	SetConsoleOutputCP(CP_UTF8);
@@ -198,7 +217,7 @@ int main()
 	}
 
 	// 배열 전체 출력
-	std::cout << "=== 전체 DB 보기 === \n";
+	std::cout << "\n=== 전체 DB 보기 === \n\n";
 	for (int ix = 0; ix < dataSize; ++ix)
 	{
 		std::cout << "[" << ix + 1 << "] " << names[ix] 
@@ -209,7 +228,7 @@ int main()
 	int rankCount = 0;
 	int currentTotal = CountNodes(root);
 
-	std::cout << "=== 랭킹 조회 === \n";
+	std::cout << "\n === 랭킹 조회 === \n";
 
 	// 입력된 값 체크
 	while (true)
@@ -241,7 +260,7 @@ int main()
 
 	while (true)
 	{
-		std::cout << "삭제할 이름을 입력하세요: \n";
+		std::cout << "삭제할 이름을 입력하세요: ";
 		std::cin >> target;
 
 		foundNode = Find(root, target);
@@ -272,6 +291,10 @@ int main()
 	std::cout << "\n[삭제 후 업데이트된 랭킹] [" << k <<"]\n";
 	rankCount = 0;
 	Top(root, rankCount, k);
+
+	// 메모리 삭제하고 root 초기화
+	DestroyTree(root);
+	root = nullptr; 
 
 	std::cin.get();	
 	return 0;

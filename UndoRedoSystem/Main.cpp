@@ -1,6 +1,4 @@
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
+#pragma execution_character_set("utf-8")
 
 #include <iostream>
 #include <clocale>
@@ -29,14 +27,14 @@ int main()
 
     while (true) {
         std::cout << "--------------------------------------------------\n";
-        std::cout << "명령어 입력 >> ";
+        std::cout << " 명령어 입력 >> ";
 
         // 사용자가 띄어쓰기 전까지 입력한 단어를 문자 배열(command)에 저장.
         if (!(std::cin >> command)) break;
 
         // strcmp()두 문자열이 완벽히 똑같으면 0 반환.
         if (strcmp(command, "exit") == 0) {
-            std::cout << "시뮬레이터를 종료합니다.\n\n";
+            std::cout << " 시뮬레이터를 종료합니다.\n\n";
             break;
         }
         else if (strcmp(command, "undo") == 0) {
@@ -53,8 +51,8 @@ int main()
             manager.OnKeyPress(command[0]);
         }
         else {
-            std::cout << "\n[오류] 잘못된 명령어입니다.";
-            std::cout << "(A~E, undo, redo, show, exit 중 하나를 입력하세요)\n";
+            std::cout << "\n 잘못된 명령어입니다.";
+            std::cout << " (A~E, undo, redo, show, exit 중 하나를 입력하세요)\n";
         }
     }
 
