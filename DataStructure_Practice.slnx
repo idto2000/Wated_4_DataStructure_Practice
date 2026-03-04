@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="RangkingSystem/RangkingSystem.vcxproj" Id="4d4f2fb8-a415-43f3-ab51-41650118e706" />
+  <Project Path="UndoRedoSystem/UndoRedoSystem.vcxproj" Id="15281f9f-e500-477e-a953-38a66f4e7f1c" />
+</Solution>
